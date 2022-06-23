@@ -1,6 +1,6 @@
 body {
   font-family: arial, sans-serif;
-  margin-top: 150px;
+  margin-top: 50px;
 }
 .weather-app {
   max-width: 600px;
@@ -11,6 +11,22 @@ body {
 }
 h1 {
   color: #bdc1c6;
+  cursor: pointer;
+  display: block;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 30px;
+  margin-bottom: 0;
+}
+ul {
+  margin: 0;
+  padding: 0;
+}
+li {
+  color: #bdc1c6;
+  list-style: none;
+  margin: 0;
+  padding: 0;
   cursor: pointer;
   display: block;
   font-size: 16px;
