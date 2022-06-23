@@ -4,7 +4,7 @@ body {
 }
 
 h1 {
-  color: #bdc1c6;
+  color: #0f4f9d;
   cursor: pointer;
   display: block;
   font-size: 16px;
@@ -17,7 +17,7 @@ ul {
   padding: 0;
 }
 li {
-  color: #bdc1c6;
+  color: #d40f85;
   list-style: none;
   margin: 0;
   padding: 0;
@@ -47,7 +47,7 @@ li {
   width: 60px;
 }
 .weather-temperature strong {
-  color: rgb(189, 193, 198);
+  color: rgb(233, 53, 83);
   font-size: 64px;
   font-weight: 400;
   line-height: 1;
