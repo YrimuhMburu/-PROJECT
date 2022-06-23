@@ -35,10 +35,8 @@ li {
   border-radius: 10px;
 }
 .weather-temperature img {
-  display: inline-block;
   height: 60px;
-  margin-top: unset;
-  vertical-align: top;
+  margin-right: 5px;
   width: 60px;
 }
 .weather-temperature strong {
