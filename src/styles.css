@@ -27,12 +27,19 @@ li {
   font-weight: 400;
   line-height: 30px;
 }
+.weather-app-wrapper{
+  margin:30px auto;
+  max-width: 600px:
+}
 .weather-app {
   max-width: 600px;
   margin: 40px auto;
   padding: 40px;
   border: 2px solid #bdc1c6;
   border-radius: 10px;
+}
+.overview{
+  margin-bottom: 20px;
 }
 .weather-temperature img {
   height: 60px;
@@ -41,7 +48,6 @@ li {
 }
 .weather-temperature strong {
   color: rgb(189, 193, 198);
-
   font-size: 70px;
   font-weight: 500;
   line-height: 1;
