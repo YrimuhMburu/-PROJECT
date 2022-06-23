@@ -46,7 +46,7 @@ li {
   font-weight: 500;
   line-height: 1;
 }
-.weather-temperature units {
+.weather-temperature .units {
   position: relative;
   font-size: 16px;
   top: -34px;
