@@ -23,7 +23,6 @@ function formatDate(date) {
   return `${day} ${hours}:${minutes}`;
 }
 function displayWeatherCondition(response) {
-  console.log(response);
   document.querySelector("#city").innerHTML = response.data.name;
   document.querySelector("#temperature").innerHTML = Math.round(
     response.data.main.temp
@@ -47,7 +46,7 @@ function handleSubmit(event) {
   let apiKey = "f91d45cb5615a81db62d90c4d20f6b10";
 
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${units}`;
-  console.log(apiUrl);
+
   axios.get(apiUrl).then(displayWeatherCondition);
 }
 function searchlocation(position) {
