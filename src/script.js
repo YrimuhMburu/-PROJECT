@@ -23,16 +23,28 @@ function formatDate(date) {
   return `${day} ${hours}:${minutes}`;
 }
 function displayWeatherCondition(response) {
-  document.querySelector("#city").innerHTML = response.data.name;
-  document.querySelector("#temperature").innerHTML = Math.round(
-    response.data.main.temp
+  console.log(response.data);
+  let temperatureElement = document.querySelector("#temperature");
+  let cityElement = document.querySelector("#city");
+  let descriptionElement = document.querySelector("#description");
+  let humidityElement = document.querySelector("#humidity");
+  let windElement = document.querySelector("#wind");
+  let dateElement = document.querySelector("#date");
+  let iconElement = document.querySelector("#icon");
+
+  celsiusTemperature = response.data.main.temp;
+
+  temperatureElement.innerHTML = Math.round(celsiusTemperature);
+  cityElement.innerHTML = response.data.name;
+  descriptionElement.innerHTML = response.data.weather[0].description;
+  humidityElement.innerHTML = response.data.main.humidity;
+  windElement.innerHTML = Math.round(response.data.wind.speed);
+  dateElement.innerHTML = formatDate(response.data.dt * 1000);
+  iconElement.setAttribute(
+    "src",
+    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
   );
-  document.querySelector("#humidity").innerHTML = response.data.main.humidity;
-  document.querySelector("#wind").innerHTML = Math.round(
-    response.data.wind.speed
-  );
-  document.querySelector("#description").innerHTML =
-    response.data.weather[0].main;
+  iconElement.setAttribute("alt", response.data.weather[0].description);
 }
 function searchCity(city) {
   let apiKey = "f91d45cb5615a81db62d90c4d20f6b10";
@@ -58,33 +70,47 @@ function getCurrentLocation(event) {
   event.preventDefault();
   navigator.geolocation.getCurrentPosition(searchlocation);
 }
-function convertToFahrenheit(event) {
+function displayFahrenheitTemperature(event) {
   event.preventDefault();
+  let fahrenheiTemperature = (23 * 9) / 5 + 32;
+  //celsiusTemperature
   let temperatureElement = document.querySelector("#temperature");
-  temperatureElement.innerHTML = 66;
+  //alert("link is ok");
+  //alert(fahrenheiTemperature);
+  temperatureElement.innerHTML = Math.Round(fahrenheiTemperature); //°C
 }
 
-function convertToCelsius(event) {
-  event.preventDefault();
-  let temperatureElement = document.querySelector("#temperature");
-  temperatureElement.innerHTML = 19;
-}
-
-// Feature #1
-let dateElement = document.querySelector("#date");
-let currentTime = new Date();
-dateElement.innerHTML = formatDate(currentTime);
-
-// Feature #2
+let celsiusTemperature = null;
 let searchForm = document.querySelector("#search-form");
 searchForm.addEventListener("submit", handleSubmit);
+let fahrenheitLink = document.querySelector("#fahrenheit-link");
+fahrenheitLink.addEventListener("click", displayFahrenheitTemperature);
+searchCity("nairobi");
+//document.querySelector("#city").innerHTML = response.data.name;
+// document.querySelector("#temperature").innerHTML = Math.round(
+//   response.data.main.temp
+//);
+//document.querySelector("#humidity").innerHTML = response.data.main.humidity;
+//document.querySelector("#wind").innerHTML = Math.round(
+//  response.data.wind.speed
+//);
+//document.querySelector("#description").innerHTML =
+// response.data.weather[0].main;
+//iconElement.setAttribute =
+//("src",
+//`http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`);
+//iconElement.setAttribute = ("alt", response.data.weather[0].description);
+//function convertToCelsius(event) {
+// event.preventDefault();
+// let temperatureElement = document.querySelector("#temperature");
+//temperatureElement.innerHTML = 19;
+//}
+//let dateElement = document.querySelector("#date");
+//let currentTime = new Date();
+//dateElement.innerHTML = formatDate(currentTime);
 
-let currentLocationButton = document.querySelector("#current-location-button");
-currentLocationButton.addEventListener("click", getCurrentLocation);
-
-// Bonus Feature
-//let fahrenheitLink = document.querySelector("#fahrenheit-link");
-//fahrenheitLink.addEventListener("click", convertToFahrenheit);
+//let currentLocationButton = document.querySelector("#current-location-button");
+//currentLocationButton.addEventListener("click", getCurrentLocation);
 
 //let celsiusLink = document.querySelector("#celsius-link");
 //celsiusLink.addEventListener("click", convertToCelsius);
@@ -101,7 +127,6 @@ currentLocationButton.addEventListener("click", getCurrentLocation);
 //let heading = document.querySelector("h1");
 //heading.innerHTML = `The current temperature is ${temperature}°c in ${response.data.name}`;
 //}
-searchCity("Nairobi");
 
 //function showPosition(position) {
 //let latitude = ;
