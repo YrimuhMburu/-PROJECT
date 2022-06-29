@@ -1,5 +1,6 @@
-function formatDate(date) {
+function formatDate(timestamp) {
   let hours = date.getHours();
+  let date = new Date(timestamp);
   if (hours < 10) {
     hours = `0${hours}`;
   }
@@ -56,7 +57,7 @@ function handleSubmit(event) {
   let cityInputElement = document.querySelector("#city-input");
 
   search(cityInputElement.value);
-  s
+  s;
 }
 
 function displayFahrenheitTemperature(event) {
@@ -75,7 +76,7 @@ function displayCelsiusTemperature(event) {
 
 let celsiusTemperature = null;
 
-let form = document.querySelector("#search-form");
+let form = document.querySelector(".search-form");
 form.addEventListener("submit", handleSubmit);
 
 let fahrenheitLink = document.querySelector("#fahrenheit-link");
