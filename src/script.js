@@ -23,6 +23,14 @@ function formatDate(timestamp) {
 
   return `${day} ${hours}:${minutes}`;
 }
+function formatDay(timestamp) {
+  let date = new Date(timestamp * 1000);
+  let day = date.getDay();
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+
+  return days[day];
+}
+
 function displayWeatherCondition(response) {
   console.log(response.data);
   let temperatureElement = document.querySelector("#temperature");
@@ -47,6 +55,7 @@ function displayWeatherCondition(response) {
   );
   iconElement.setAttribute("alt", response.data.weather[0].description);
 }
+
 function search(city) {
   let apiKey = "f91d45cb5615a81db62d90c4d20f6b10";
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
@@ -57,7 +66,6 @@ function handleSubmit(event) {
   let cityInputElement = document.querySelector("#city-input");
 
   search(cityInputElement.value);
-  s;
 }
 
 function displayFahrenheitTemperature(event) {
