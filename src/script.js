@@ -34,12 +34,12 @@ function displayForecast(response) {
   let forecastElement = document.querySelector("#forecast");
   let forecastHTML = `<div class="row">`;
   let days = ["Sat", "Sun", "Mon", "Tue", "Wed"];
-  days.forEach(function (days) {
+  days.forEach(function (day) {
     forecastHTML =
       forecastHTML +
       `
  <div class="col-2">
-<div class="weather-forecast-date">${days}</div>
+<div class="weather-forecast-date">${day}</div>
  <img src="http://openweathermap.org/img/wn/50d@2x.png" alt ="" width="42"/>
 <div class="weather-forecast-temperatures">
 <span class="weather-forecast-temperature-max">18°</span>
@@ -81,13 +81,14 @@ function displayTemperature(response) {
     `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
   );
   iconElement.setAttribute("alt", response.data.weather[0].description);
+
   getForecast(response.data.coord);
 }
 
 function search(city) {
   let apiKey = "f91d45cb5615a81db62d90c4d20f6b10";
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
-  axios.get(apiUrl).then(displayWeatherCondition);
+  axios.get(apiUrl).then(displayTemperature);
 }
 function handleSubmit(event) {
   event.preventDefault();
@@ -98,9 +99,9 @@ function handleSubmit(event) {
 
 function displayFahrenheitTemperature(event) {
   event.preventDefault();
-  let fahrenheiTemperature = (celsiusTemperature * 9) / 5 + 32;
-
   let temperatureElement = document.querySelector("#temperature");
+
+  let fahrenheiTemperature = (celsiusTemperature * 9) / 5 + 32;
 
   temperatureElement.innerHTML = Math.Round(fahrenheiTemperature);
 }
