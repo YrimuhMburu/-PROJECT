@@ -34,8 +34,8 @@ function displayForecast() {
   let forecastElement = document.querySelector("#forecast");
   let forecastHTML = `<div class="row
   ">`;
-  let day = ["Sat", "Sun", "Mon", "Tue", "Wed"];
-  day.forEach(function (day) {
+  let days = ["Sat", "Sun", "Mon", "Tue", "Wed"];
+  days.forEach(function (day) {
     forecastHTML =
       forecastHTML +
       `
@@ -114,3 +114,4 @@ fahrenheitLink.addEventListener("click", displayFahrenheitTemperature);
 let celsiusLink = document.querySelector("#celsius-link");
 celsiusLink.addEventListener("click", displayCelsiusTemperature);
 search("Nairobi");
+displayForecast();
